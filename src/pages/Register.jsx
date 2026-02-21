@@ -1,20 +1,32 @@
 import {Link} from "react-router-dom"
 import { useState } from "react"
 import './Register.css'
+import axios from "axios"
 
 function Register(){
     const[name,setName] = useState("")
     const[email,setEmail] = useState("")
     const[password,setPassword]=useState("")
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = async(e) =>{
         e.preventDefault()
         console.log(name,email,password)
+        try{
+            await axios.post("http://localhost:5000/api/auth/register",{
+                name,
+                email,
+                password
+            })
+            alert("Registered Sucessfully")
+        }catch(err)
+        {
+            alert("error registering")
+        }
     }
 
     return(
         <div className="register-container">
-            <form className="register-form" inSubmit={handleSubmit}>
+            <form className="register-form" onSubmit={handleSubmit}>
                 <h2>Register</h2>
 
                 <input type="text" placeholder="Name" className="register-input" value={name} 
