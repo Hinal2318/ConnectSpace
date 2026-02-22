@@ -1,6 +1,8 @@
 import express from "express"
 import authmiddleware from "../middleware/auth.js";
 import Details from "../models/Details.js";
+import authMiddleware from "../middleware/auth.js";
+import Detail from "../models/Details.js";
 
 const router=express.Router()
 
@@ -70,4 +72,36 @@ router.delete("/delete/:id", authmiddleware, async (req, res) => {
   }
 });
 
+
+
+// LIKE / UNLIKE
+router.post("/like/:id", authMiddleware, async (req, res) => {
+  try {
+    const detail = await Detail.findById(req.params.id);
+
+    if (!detail) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
+    const userId = req.user.id;
+
+    // Check if already liked
+    if (detail.likes.includes(userId)) {
+      // Unlike
+      detail.likes = detail.likes.filter(
+        (id) => id.toString() !== userId
+      );
+    } else {
+      // Like
+      detail.likes.push(userId);
+    }
+
+    await detail.save();
+
+    res.json({ message: "Like updated" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
 export default router;

@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+
 const detailSchema = new mongoose.Schema({
     name: 
     { type: String,
@@ -23,7 +24,14 @@ const detailSchema = new mongoose.Schema({
             default:Date.now,
         },
     },
-]
+],
+
+    likes: [
+  {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
+],
 },
  { timestamps: true });
 export default mongoose.model("Detail", detailSchema);
