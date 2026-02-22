@@ -55,6 +55,26 @@ const deletePost = async (id) => {
   }
 };
 
+const handleLike = async (id) => {
+  const token = localStorage.getItem("token");
+
+  try {
+    await axios.post(
+      `http://localhost:5000/api/details/like/${id}`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    fetchDetails();
+  } catch (err) {
+    console.log(err);
+  }
+};
+
   return (
     <>
       <Navbar />
@@ -81,6 +101,12 @@ const deletePost = async (id) => {
               
               <div className="post-content">
                 <p>{items.description}</p>
+                 <button 
+                className="like-btn"
+                onClick={() => handleLike(items._id)}
+                >
+               ❤️ {items.likes ? items.likes.length : 0}
+               </button>
               </div>
 
             
