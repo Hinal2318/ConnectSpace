@@ -4,6 +4,7 @@ import Register from './pages/Register';
 
 import AddDetails from './pages/AddDetails';
 import Home from './pages/Home';
+import Profile from './pages/Profile';
 
 function App(){
   return (
@@ -12,6 +13,7 @@ function App(){
       <Route path="/register" element={<Register/>}/>
       <Route path="/add" element={<AddDetails />} />
       <Route path='/home' element={<Home/>}/>
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   )
 }
