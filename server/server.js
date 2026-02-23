@@ -9,7 +9,7 @@ dotenv.config();
 const app=express()
 
 app.use(cors({
-  origin: ["https://your-vercel-app-url.vercel.app"], // Replace with your actual Vercel link
+  origin: ["https://your-vercel-app-url.vercel.app"], 
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
