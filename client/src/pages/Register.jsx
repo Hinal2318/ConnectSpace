@@ -12,7 +12,7 @@ function Register(){
         e.preventDefault()
         console.log(name,email,password)
         try{
-            await axios.post("http://localhost:5000/api/auth/register",{
+            await axios.post("https://connect-space-api.onrender.com/api/auth/register",{
                 name,
                 email,
                 password
