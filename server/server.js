@@ -9,9 +9,10 @@ dotenv.config();
 const app=express()
 
 app.use(cors({
-  origin: ["https://connect-space-git-main-hinal-patels-projects.vercel.app"], 
+  origin: "https://connect-space-beige.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
+  credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
 app.use(express.json())
