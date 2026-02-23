@@ -41,7 +41,7 @@ const deletePost = async (id) => {
   if (!window.confirm("Are you sure you want to delete this post?")) return;
 
   try {
-    const res = await axios.delete(`http://localhost:5000/api/details/delete/${id}`, {
+    const res = await axios.delete(`https://connect-space-api.onrender.com/api/details/delete/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
