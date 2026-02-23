@@ -22,7 +22,7 @@ const AddDetails = () => {
 
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/details/add",
+      "https://connect-space-api.onrender.com/api/details/add",
       form,
       { headers: { Authorization: `Bearer ${token}` } }
     );
