@@ -13,7 +13,7 @@ const Home = () => {
 
   const fetchDetails = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/details/all");
+      const res = await axios.get("https://connect-space-api.onrender.com/api/details/all");
       setDetails(res.data);
     } catch (error) {
       console.log(error);
@@ -23,7 +23,7 @@ const Home = () => {
   const addComment=async(id)=>{
     const token=localStorage.getItem("token");
     try{
-    await axios.post(`http://localhost:5000/api/details/comment/${id}`,
+    await axios.post(`https://connect-space-api.onrender.com/api/details/comment/${id}`,
       {text:commentText},
       {headers:{Authorization:`Bearer ${token}`}}
     );
@@ -60,7 +60,7 @@ const handleLike = async (id) => {
 
   try {
     await axios.post(
-      `http://localhost:5000/api/details/like/${id}`,
+      `https://connect-space-api.onrender.com/api/details/like/${id}`,
       {},
       {
         headers: {

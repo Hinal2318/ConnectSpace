@@ -13,7 +13,7 @@ const Profile = () => {
     const token = localStorage.getItem("token");
 
     const res = await axios.get(
-      "http://localhost:5000/api/details/all",
+      "https://connect-space-api.onrender.com/api/details/all",
       {
         headers: {
           Authorization: `Bearer ${token}`,
